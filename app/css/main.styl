@@ -1,0 +1,82 @@
+@font-face
+    font-family 'HelveticaNow'
+    src url('./../assets/HelveticaNowTextMedium.otf')
+    font-weight 400
+
+@font-face
+    font-family 'HelveticaNow'
+    src url('./../assets/HelveticaNowTextExtraLight.otf')
+    font-weight 200
+
+@font-face
+    font-family 'HelveticaNow'
+    src url('./../assets/HelveticaNowTextBold.otf')
+    font-weight 600
+
+naviHeight = 70px
+
+html, body
+    padding 0
+    margin 0
+    font-family HelveticaNow
+    webkit-font-smoothing antialiased
+    font-smoothing grayscale
+    overscroll-behavior none
+    letter-spacing -1px
+    font-size 50px
+    line-height 50px
+
+#main
+    position relative
+    margin naviHeight + 20px 20px 0 20px
+
+    
+.navi
+    position fixed
+    background #000000
+    color #ffffff
+    height naviHeight
+    width 100%
+    z-index 100
+    font-weight 600
+    .inner
+        position absolute
+        font-weight 600
+        top 50%
+        left 50%
+        width calc( 100% - 40px )
+        transform translate3d( -50%, -50%, 0 )
+    &#header
+        top 0
+        .inner
+            margin-top -5px
+    &#footer
+        bottom 0
+        .arrow
+            line-height 0
+            &.left
+                float left
+            &.right
+                float right
+
+.clearfix:after {
+    content ""
+    display table
+    clear both
+}
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.page
+    .active
+        display block
+p
+    &.title
+        font-weight 600
+    &.wlinebreaks
+        white-space pre
