@@ -5,22 +5,77 @@ html
     meta(http-equiv='Content-Type',content='text/html; charset=utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
-    title Project title
+    title pppp
     link(rel='stylesheet', id='mainStylesheet' href='../css/main.styl')
   body
     #header.navi
-      .inner pppp
-    #footer.navi
+      .inner
+        #pageTitle.main pppp
+    #footer.navi.first( data-navitype = 'first' )
       .inner.clearfix
         span.arrow.left ←
         span.arrow.right →
-    #main
-      .page.active
-        p.title.wlinebreaks
-          | public protest
-          | poster project
-        p La plataforma horizontal que da voz a las personas, a los barrios y a las ciudades
+    #mainFlow
+      .page.active( data-title='pppp', data-pid='main' )
+        .inner
+          p.title.wlinebreaks
+            | public protest
+            | poster project
+          p La plataforma horizontal que da voz a las personas, a los barrios y a las ciudades
+      .page( data-title='0. Intro', data-pid='intro1' )
+        .inner
+          p La herramienta con la que puedes diseñar tu propio poster y compartirlo en comunidad
+      .page( data-title='0. Intro', data-pid='intro2' )
+        .inner
+          p Además, proyectaremos los posters que la comunidad diseñe desde alguno de nuestros puntos ubicados en la ciudad de Barcelona 
+          p Además, proyectaremos los posters que la comunidad diseñe desde alguno de nuestros puntos ubicados en la ciudad de Barcelona 
+      .page( data-title='0. Intro', data-pid='intro3' )
+        .inner
+          p También podrás guardarlo en formato PDF para imprimirlo y darle el uso que quieras.
+      .page( data-title='1. Tema', data-pid='theme' )
+        .inner
+          p De qué quieres hablar?
+          p Activism, alarma, amor, animales, anti, arte, aware, balance, banks, beach, bed, believe, big data, biology, body, borders, brexit, bycicle, capitalism, censorship, chance, change, caos, charity, children, choices, clean, climate, consumer, color, common sense, community, conflicts, conspiracy, contact, control, cookies, corona, corruption, countries, crazy, cultura, cure, curious, danza, danger, day, debate, democracy, derecho, diferente, dignidad, dinero... 
+      .page( data-title='2. Tono', data-pid='tone' )
+        .inner
+          p Cual es el tono de tu cartel?
+          p Afirmativo, crítico, interrogativo, interpelador, para la sociedad, ciencia ficción, futuro, mundo paralelo, comprensivo, irónico, satírico, divertido, provocador, asociativo, retórico, pacífico, post, anti, meta, ultra…
+      .page( data-title='3. Redacción', data-pid='infotext' )
+        .inner
+          p Ahora puedes escribir tu mensaje para el mundo! (máximo 7 palabras, no muy largas y en el idioma que quieras)
+      .page( data-title='3. Redacción', data-pid='text' )
+        .inner
+          textarea
+      .page( data-title='4. Tipografía', data-pid='font' )
+        .inner
+          ul
+            li type
+            li type
+            li type
+            li type
+      .page( data-title='5. Tamaño', data-pid='size' )
+        .inner size
+      .page( data-title='6. Alinear', data-pid='align' )
+        .inner align
+      .page( data-title='6. Color', data-pid='color' )
+        .inner color
+      .page( data-title='7. Tu cartel', data-pid='preview' )
+        .inner preview
+      .page( data-title='8. Guardar', data-pid='save' )
+        .inner
+          p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a(href='javascript:void(0)') fotos], o en PDF para #[a(href='javascript:void(0)') imprimirlo]
 
-      
+      .page( data-title='9. Compartir', data-pid='share' )
+        .inner
+          ul
+            li Telegram
+            li Whatsapp
+            li Instagram
+            li Twitter
+      .page( data-title='10. News', data-pid='news' )
+        .inner
+          p Queremos avisarte para que veas tu cartel proyectado en los muros.
+          p Raúl@goni-studio.com
+          p Enviar
 
     script(src='../js/main.js')

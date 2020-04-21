@@ -18,17 +18,22 @@ naviHeight = 70px
 html, body
     padding 0
     margin 0
+    // overscroll-behavior none
+    height 100%
+
+body
+    letter-spacing -1.5px
+    font-size 46px
+    line-height 50px
     font-family HelveticaNow
     webkit-font-smoothing antialiased
     font-smoothing grayscale
-    overscroll-behavior none
-    letter-spacing -1px
-    font-size 50px
-    line-height 50px
 
-#main
+#mainFlow
     position relative
-    margin naviHeight + 20px 20px 0 20px
+    width 100vw
+    height 100%
+    overflow hidden
 
     
 .navi
@@ -49,9 +54,27 @@ html, body
     &#header
         top 0
         .inner
-            margin-top -5px
+            #pageTitle
+                font-weight 400
+                &.main
+                    margin-top -5px
+                    font-weight 600
     &#footer
         bottom 0
+        &[data-navitype="blockPrev"]
+            .arrow.left
+                opacity 0.5
+                pointer-events none
+        &[data-navitype="blockNext"]
+            .arrow.right
+                opacity 0.5
+                pointer-events none
+        &[data-navitype="first"]
+            .arrow.left
+                display none
+        &[data-navitype="last"]
+            .arrow.right
+                display none
         .arrow
             line-height 0
             &.left
@@ -72,8 +95,22 @@ html, body
    clear: both;
 }
 
+
 .page
-    .active
+    position absolute
+    background #ffffff
+    width 100vw
+    height 100%
+    overflow scroll
+    transition transform 0.45s
+    transform translate3d( 0vw, 0, 0 )
+    &.left
+        transform translate3d( -100vw, 0, 0 )
+    &.right
+        transform translate3d( 100vw, 0, 0 )
+    .inner
+        margin naviHeight + 20px 20px naviHeight + 20px 20px
+    &.active
         display block
 p
     &.title
