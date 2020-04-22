@@ -17,6 +17,6 @@
     "stylus": "^0.54.7"
   },
   "dependencies": {
-    "three": "*"
+    "EventEmitter": "^1.0.0"
   }
 }

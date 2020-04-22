@@ -28,35 +28,47 @@ html
       .page( data-title='0. Intro', data-pid='intro2' )
         .inner
           p Además, proyectaremos los posters que la comunidad diseñe desde alguno de nuestros puntos ubicados en la ciudad de Barcelona 
-          p Además, proyectaremos los posters que la comunidad diseñe desde alguno de nuestros puntos ubicados en la ciudad de Barcelona 
       .page( data-title='0. Intro', data-pid='intro3' )
         .inner
           p También podrás guardarlo en formato PDF para imprimirlo y darle el uso que quieras.
       .page( data-title='1. Tema', data-pid='theme' )
         .inner
-          p De qué quieres hablar?
-          p Activism, alarma, amor, animales, anti, arte, aware, balance, banks, beach, bed, believe, big data, biology, body, borders, brexit, bycicle, capitalism, censorship, chance, change, caos, charity, children, choices, clean, climate, consumer, color, common sense, community, conflicts, conspiracy, contact, control, cookies, corona, corruption, countries, crazy, cultura, cure, curious, danza, danger, day, debate, democracy, derecho, diferente, dignidad, dinero... 
+          p De qué#[br ] quieres hablar?
+          p.bodySized Activism, alarma, amor, animales, anti, arte, aware, balance, banks, beach, bed, believe, big data, biology, body, borders, brexit, bycicle, capitalism, censorship, chance, change, caos, charity, children, choices, clean, climate, consumer, color, common sense, community, conflicts, conspiracy, contact, control, cookies, corona, corruption, countries, crazy, cultura, cure, curious, danza, danger, day, debate, democracy, derecho, diferente, dignidad, dinero... 
       .page( data-title='2. Tono', data-pid='tone' )
         .inner
           p Cual es el tono de tu cartel?
-          p Afirmativo, crítico, interrogativo, interpelador, para la sociedad, ciencia ficción, futuro, mundo paralelo, comprensivo, irónico, satírico, divertido, provocador, asociativo, retórico, pacífico, post, anti, meta, ultra…
+          p.bodySized Afirmativo, crítico, interrogativo, interpelador, para la sociedad, ciencia ficción, futuro, mundo paralelo, comprensivo, irónico, satírico, divertido, provocador, asociativo, retórico, pacífico, post, anti, meta, ultra…
       .page( data-title='3. Redacción', data-pid='infotext' )
         .inner
           p Ahora puedes escribir tu mensaje para el mundo! (máximo 7 palabras, no muy largas y en el idioma que quieras)
       .page( data-title='3. Redacción', data-pid='text' )
         .inner
           textarea
-      .page( data-title='4. Tipografía', data-pid='font' )
+      .page.fullscreen( data-title='4. Tipografía', data-pid='font', data-class = 'Font' )
         .inner
           ul
-            li type
-            li type
-            li type
-            li type
-      .page( data-title='5. Tamaño', data-pid='size' )
-        .inner size
-      .page( data-title='6. Alinear', data-pid='align' )
-        .inner align
+            li(data-font='helvetica') HOLA!
+            li(data-font='whatever').selected HOLA!
+            li(data-font='whatever2') HOLA!
+            li(data-font='whatever3') HOLA!
+            li(data-font='whatever4') HOLA!
+            li(data-font='whatever5') HOLA!
+            li(data-font='whatever6') HOLA!
+            li(data-font='whatever7') HOLA!
+      .page.fullscreen( data-title='5. Tamaño', data-pid='size', data-class = 'Size' )
+        .inner
+          #sizeSelector
+            span.selector.less( data-action='less') –
+            span.selector.more( data-action='more') +
+          .posterPreview HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
+      .page.fullscreen( data-title='6. Alinear', data-pid='align', data-class = 'Align' )
+        .inner
+          #alignSelector
+            span.selector.left( data-action='left')
+            span.selector.center( data-action='center')
+            span.selector.right( data-action='right')
+          .posterPreview HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
       .page( data-title='6. Color', data-pid='color' )
         .inner color
       .page( data-title='7. Tu cartel', data-pid='preview' )
