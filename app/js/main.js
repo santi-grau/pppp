@@ -32,7 +32,7 @@ class Flow{
             else this.pages.push( new Page( p ) )
         })
 
-        this.navigate( 10 )
+        this.navigate( 0 )
     }
 
     navigate( page ){
