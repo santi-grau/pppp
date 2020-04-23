@@ -8,13 +8,17 @@ html
     title pppp
     link(rel='stylesheet', id='mainStylesheet' href='../css/main.styl')
   body
-    #header.navi
-      .inner
-        #pageTitle.main pppp
-    #footer.navi.first( data-navitype = 'first' )
-      .inner.clearfix
-        span.arrow.left ←
-        span.arrow.right →
+    //- #menu
+    //-   ul
+    //-     li News
+    //-     li Galería
+    //-     li About
+    //-     li Manifesto
+    //-     li Contacto
+    //-     li FAQ
+    //-     li Créditos
+
+    #posterPreview HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
     #mainFlow
       .page.active( data-title='pppp', data-pid='main' )
         .inner
@@ -42,41 +46,47 @@ html
       .page( data-title='3. Redacción', data-pid='infotext' )
         .inner
           p Ahora puedes escribir tu mensaje para el mundo! (máximo 7 palabras, no muy largas y en el idioma que quieras)
-      .page( data-title='3. Redacción', data-pid='text' )
+      .page( data-title='3. Redacción', data-pid='writer', data-class = 'Writer' )
         .inner
           textarea
       .page.fullscreen( data-title='4. Tipografía', data-pid='font', data-class = 'Font' )
         .inner
-          ul
-            li(data-font='helvetica') HOLA!
-            li(data-font='whatever').selected HOLA!
-            li(data-font='whatever2') HOLA!
-            li(data-font='whatever3') HOLA!
-            li(data-font='whatever4') HOLA!
-            li(data-font='whatever5') HOLA!
-            li(data-font='whatever6') HOLA!
-            li(data-font='whatever7') HOLA!
-      .page.fullscreen( data-title='5. Tamaño', data-pid='size', data-class = 'Size' )
+          ul.optionList
+            li.helvetica(data-font='helvetica') HOLA!
+            li.af(data-font='af').selected HOLA!
+            li.times(data-font='times') HOLA!
+            li.modern(data-font='modern') HOLA!
+            li.marsh(data-font='marsh') HOLA!
+            li.prismaset(data-font='prismaset') HOLA!
+            li.trim(data-font='trim') HOLA!
+            li.geogrotesque(data-font='geogrotesque') HOLA!
+      .page.fullscreen.inlineEditor( data-title='5. Tamaño', data-pid='size', data-class = 'Size' )
         .inner
           #sizeSelector
-            span.selector.less( data-action='less') –
             span.selector.more( data-action='more') +
-          .posterPreview HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
-      .page.fullscreen( data-title='6. Alinear', data-pid='align', data-class = 'Align' )
+            span.selector.less( data-action='less') –
+      .page.fullscreen.inlineEditor( data-title='6. Alinear', data-pid='align', data-class = 'Align' )
         .inner
           #alignSelector
             span.selector.left( data-action='left')
             span.selector.center( data-action='center')
             span.selector.right( data-action='right')
-          .posterPreview HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
-      .page( data-title='6. Color', data-pid='color' )
-        .inner color
-      .page( data-title='7. Tu cartel', data-pid='preview' )
-        .inner preview
+      .page.fullscreen( data-title='6. Color', data-pid='color', data-class = 'Color' )
+        .inner
+          ul.optionList
+            li.col(data-color='#626262') HOLA!
+            li.col(data-color='#003300') HOLA!
+            li.col(data-color='#000066') HOLA!
+            li.col(data-color='#330066') HOLA!
+            li.col(data-color='#660033') HOLA!
+            li.col(data-color='#990000') HOLA!
+            li.col(data-color='#ff3300') HOLA!
+            li(data-color='#ffffff').selected HOLA!
+      .page.inlineEditor( data-title='7. Tu cartel', data-pid='preview' )
+        .inner
       .page( data-title='8. Guardar', data-pid='save' )
         .inner
           p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a(href='javascript:void(0)') fotos], o en PDF para #[a(href='javascript:void(0)') imprimirlo]
-
       .page( data-title='9. Compartir', data-pid='share' )
         .inner
           ul
@@ -89,5 +99,12 @@ html
           p Queremos avisarte para que veas tu cartel proyectado en los muros.
           p Raúl@goni-studio.com
           p Enviar
-
+    #header.navi
+      .inner
+        #pageTitle.main pppp
+      #menuBut —
+    #footer.navi.first( data-navitype = 'first' )
+      .inner.clearfix
+        span.arrow.left ←
+        span.arrow.right →
     script(src='../js/main.js')

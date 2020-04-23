@@ -12,9 +12,8 @@ class Font extends Page{
 
     selectFont( e ){
         this.node.querySelector( 'li.selected' ).classList.remove( 'selected' )
-        var font = e.currentTarget.dataset.font
         e.currentTarget.classList.add( 'selected' )
-        this.emit( 'updateProp' , { prop : 'font', val : e.currentTarget.dataset.font } )
+        this.emit( 'updateFlow' , { action : 'fontUpdate', data : this.node.querySelector( 'li.selected' ).dataset.font } )
     }
 }
 

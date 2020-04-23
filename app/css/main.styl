@@ -12,9 +12,50 @@
     font-family 'HelveticaNow'
     src url('./../assets/HelveticaNowTextBold.otf')
     font-weight 600
-    
 
-naviHeight = 70px
+@font-face
+    font-family 'geogrotesque'
+    src url('./../assets/geogrotesque.otf')
+
+@font-face
+    font-family 'marsh'
+    src url('./../assets/marsh.otf')
+
+@font-face
+    font-family 'prismaset'
+    src url('./../assets/prismaset.otf')
+
+@font-face
+    font-family 'trim'
+    src url('./../assets/trim.otf')
+
+naviHeight = 32px
+
+.helvetica
+    font-family HelveticaNow
+    font-weight 600
+
+.af
+    font-family 'Courier New', Courier, monospace
+
+.times
+    font-family Times
+    font-weight 900
+
+.modern
+    font-family 'Courier New', Courier, monospace
+
+.marsh
+    font-family marsh
+
+.prismaset
+    font-family prismaset
+
+.trim
+    font-family trim
+
+.geogrotesque
+    font-family geogrotesque
 
 html, body
     padding 0
@@ -30,13 +71,22 @@ body
     webkit-font-smoothing antialiased
     font-smoothing grayscale
 
+#menu
+    position absolute
+    background #ffffff
+    width 100vw
+    height 100%
+    overflow scroll
+    transition transform 0.45s
+    transform translate3d( 0vw, 0, 0 )
+    z-index 10
+
 #mainFlow
     position relative
     width 100vw
     height 100%
     overflow hidden
 
-    
 .navi
     position fixed
     background #000000
@@ -45,6 +95,8 @@ body
     width 100%
     z-index 100
     font-weight 600
+    font-size 23px
+    letter-spacing -0.75px
     .inner
         position absolute
         font-weight 600
@@ -60,6 +112,12 @@ body
                 &.main
                     margin-top -5px
                     font-weight 600
+        #menuBut
+            position absolute
+            right 20px
+            top -5px
+            &.open
+                transform rotate( -90deg )
     &#footer
         bottom 0
         &[data-navitype="blockPrev"]
@@ -105,6 +163,8 @@ body
     overflow scroll
     transition transform 0.45s
     transform translate3d( 0vw, 0, 0 )
+    &.inlineEditor
+        background none
     &.left
         transform translate3d( -100vw, 0, 0 )
     &.right
@@ -116,18 +176,33 @@ body
         margin naviHeight + 20px 20px naviHeight + 20px 20px
     &.active
         display block
-    &[data-pid="font"]
-        ul
+    
+    ul.optionList
+        margin 0
+        padding 0
+        li
+            border-bottom solid 1px #444444
+            position relative
+            padding 15px 20px
+            &.col
+                color #ffffff
+            &.selected::after
+                font-family HelveticaNow
+                content '√'
+                position absolute
+                right 20px
+    &[data-pid="writer"]
+        textarea
+            outline 0px none transparent
+            width 100%
             margin 0
             padding 0
-            li
-                border-bottom solid 1px #444444
-                position relative
-                padding 15px 20px
-                &.selected::after
-                    content '√'
-                    position absolute
-                    right 20px
+            // display block
+            height 100vh
+            font-size 46px
+            line-height 50px
+            font-family HelveticaNow
+            border none
     &[data-pid="size"]
         #sizeSelector
             position relative
@@ -135,16 +210,13 @@ body
             height naviHeight
             color #ffffff
             z-index 2
-            .selector
-                line-height 0
+            font-size 36px
+            .selector 
                 position relative
-                top 50%
-                transform translate3d( 0, -50%, 0 )
+                top -11px
                 &.more
-                    float right
-                    margin-right 20px
+                    margin-left 20px
                 &.less
-                    float left
                     margin-left 20px
     &[data-pid="align"]
         #alignSelector
@@ -158,21 +230,21 @@ body
                 background-size 256px 256px
                 background-position 0px 0px
                 width 64px
-                height 64px
-                top 3px
+                height naviHeight
                 position absolute
                 display inline-block
                 &.left
                     left 20px
-                    background-position -13px 0px
+                    background-position -13px -16px
                 &.center
                     left 50%
-                    background-position -64px 0px
+                    background-position -64px -16px
                     transform translate3d( -50%, 0 , 0 )
                 &.right
                     right 20px
-                    background-position -115px 0px
-.posterPreview
+                    background-position -115px -16px
+
+#posterPreview
     position absolute
     top 50%
     left 50%

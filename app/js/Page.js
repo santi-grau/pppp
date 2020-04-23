@@ -5,6 +5,14 @@ class Page extends EventEmitter{
         super()
         this.node = node
     }
+
+    onEnterPage(){
+    
+    }
+
+    // onLeavePage(){
+    //     console.log( 'bye' )
+    // }
 }
 
 export { Page as default }

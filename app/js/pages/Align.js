@@ -13,7 +13,7 @@ class Align extends Page{
     }
 
     selectAlign( e ){
-        this.node.querySelector( '.posterPreview' ).style.textAlign = e.currentTarget.dataset.action
+        this.emit( 'updateFlow' , { action : 'alignUpdate', data : e.currentTarget.dataset.action } )
     }
 }
 

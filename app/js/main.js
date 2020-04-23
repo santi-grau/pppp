@@ -18,7 +18,27 @@
 import Pages from './Pages/*.js'
 import Page from './Page'
 
-console.log( Pages, Page )
+class PosterPreview{
+    constructor(){
+        this.node = document.getElementById( 'posterPreview' )
+    }
+
+    updateCopy( copy ){
+        this.node.innerHTML = copy
+    }
+
+    updateSize( size ){
+        this.node.style.transform = 'translate3d( -50%, -50%, 0 ) scale( ' + size + ' )'
+    }
+
+    updateFont( font ){
+        this.node.className = font
+    }
+
+    updateAlign( dir ){
+        this.node.style.textAlign = dir
+    }
+}
 
 class Flow{ 
     constructor( page = 0 ){
@@ -27,12 +47,32 @@ class Flow{
 
         var pages = document.querySelectorAll( '.page' )
         Object.values( pages ).forEach( p => {
-
-            if( p.dataset.class ) this.pages.push( new Pages[ p.dataset.class ].default( p ) )
-            else this.pages.push( new Page( p ) )
+            var pageObject
+            if( p.dataset.class ) pageObject = new Pages[ p.dataset.class ].default( p )
+            else pageObject = new Page( p )
+            pageObject.on( 'updateFlow', ( e ) => this.update( e ) )
+            this.pages.push( pageObject )
         })
 
         this.navigate( 0 )
+    }
+
+    update( e ){
+        switch( e.action ) {
+            case 'copyUpdate':
+                posterPreview.updateCopy( e.data )
+                break;
+            case 'sizeUpdate':
+                posterPreview.updateSize( e.data )
+                break;
+            case 'fontUpdate':
+                posterPreview.updateFont( e.data )
+                break;
+            case 'alignUpdate':
+                posterPreview.updateAlign( e.data )
+                break;
+            default: console.log( 'no idea ')
+        }
     }
 
     navigate( page ){
@@ -48,6 +88,9 @@ class Flow{
         currentPage.classList.remove( 'left' )
         currentPage.classList.remove( 'right' )
 
+        this.pages[ this.page ].onEnterPage()
+        // if( this.page > 0 ) this.pages[ this.page - 1 ].onLeavePage()
+
         for( var i = 0 ; i < this.page ; i++ ){
             this.pages[ i ].node.classList.remove( 'active' )
             this.pages[ i ].node.classList.add( 'left' )
@@ -61,11 +104,11 @@ class Flow{
         var headerTitle = document.querySelector( '#pageTitle' )
         headerTitle.classList.toggle( 'main', this.page == 0 ) 
         headerTitle.innerHTML = currentPage.dataset.title
-        
     }
 }
 
-
+var posterPreview = new PosterPreview()
 var flow = new Flow()
 document.querySelector( '.arrow.right' ).addEventListener( 'click', ( ) => flow.navigate( ++flow.page ) )
 document.querySelector( '.arrow.left' ).addEventListener( 'click', ( ) => flow.navigate( --flow.page ) )
+document.querySelector( '#menuBut' ).addEventListener( 'click', ( ) => console.log( 'here' ) )
