@@ -70,19 +70,33 @@ body
     font-family HelveticaNow
     webkit-font-smoothing antialiased
     font-smoothing grayscale
+    background #bfbfbf
 
 #menu
     position absolute
     background #ffffff
     width 100vw
     height 100%
-    overflow scroll
+    overflow hidden
     transition transform 0.45s
     transform translate3d( 0vw, 0, 0 )
     z-index 10
+    display none
+    pointer-events none
+    top 0
+    left 0
+    &.active
+        display block
+        pointer-events auto
+    ul
+        margin 0
+        padding 0
+        list-style-type none
 
 #mainFlow
-    position relative
+    position absolute
+    top 0
+    left 0
     width 100vw
     height 100%
     overflow hidden
@@ -134,6 +148,11 @@ body
         &[data-navitype="last"]
             .arrow.right
                 display none
+        &[data-navitype="middle"]
+            .arrow.right
+                display block
+            .arrow.left
+                display block
         .arrow
             line-height 0
             &.left
@@ -243,14 +262,41 @@ body
                 &.right
                     right 20px
                     background-position -115px -16px
-
+    &[data-pid="share"]
+        ul
+            list-style-type none
+            margin 0
+            padding 0
+    &[data-pid="news"]
+        input
+            font-family HelveticaNow
+            font-size 23px
+            letter-spacing -0.75px
+            line-height 25px
+    
 #posterPreview
     position absolute
+    width 90vw
+    height 132vw
     top 50%
     left 50%
-    transition transform 0.4s
     transform translate3d( -50%, -50%, 0 )
     text-align center
+    background #ffffff
+    overflow hidden
+    // z-index 400
+    pointer-events none
+    &.screenshot
+        top 0
+        left 0
+        transform translate3d( 0, 0, 0 )
+    .inner
+        position absolute
+        top 50%
+        left 50%
+        transform translate3d( -50%, -50%, 0 )
+        // background rgba( 0, 0, 0, 0.05 )
+        transition transform 0.4s
 
 p
     &.title
@@ -261,3 +307,6 @@ p
         letter-spacing -0.25px
         font-size 23px
         line-height 23px
+
+a
+    color #000000

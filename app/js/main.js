@@ -15,37 +15,19 @@
 //         im.src = url2
 //     })
 // });
+
+
 import Pages from './Pages/*.js'
 import Page from './Page'
-
-class PosterPreview{
-    constructor(){
-        this.node = document.getElementById( 'posterPreview' )
-    }
-
-    updateCopy( copy ){
-        this.node.innerHTML = copy
-    }
-
-    updateSize( size ){
-        this.node.style.transform = 'translate3d( -50%, -50%, 0 ) scale( ' + size + ' )'
-    }
-
-    updateFont( font ){
-        this.node.className = font
-    }
-
-    updateAlign( dir ){
-        this.node.style.textAlign = dir
-    }
-}
+import Poster from './Poster'
 
 class Flow{ 
     constructor( page = 0 ){
+        this.node = document.querySelector( '#mainFlow' )
         this.page = page
         this.pages = []
 
-        var pages = document.querySelectorAll( '.page' )
+        var pages = this.node.querySelectorAll( '.page' )
         Object.values( pages ).forEach( p => {
             var pageObject
             if( p.dataset.class ) pageObject = new Pages[ p.dataset.class ].default( p )
@@ -60,16 +42,19 @@ class Flow{
     update( e ){
         switch( e.action ) {
             case 'copyUpdate':
-                posterPreview.updateCopy( e.data )
+                poster.updateCopy( e.data )
                 break;
             case 'sizeUpdate':
-                posterPreview.updateSize( e.data )
+                poster.updateSize( e.data )
                 break;
             case 'fontUpdate':
-                posterPreview.updateFont( e.data )
+                poster.updateFont( e.data )
                 break;
             case 'alignUpdate':
-                posterPreview.updateAlign( e.data )
+                poster.updateAlign( e.data )
+                break;
+            case 'colorUpdate':
+                poster.updateColor( e.data )
                 break;
             default: console.log( 'no idea ')
         }
@@ -80,7 +65,7 @@ class Flow{
         
         var footer = document.querySelector( '#footer' )
         if( this.page == 0 ) footer.dataset.navitype = 'first'
-        if( this.page > 0 && this.page < this.pages.length - 1 ) footer.dataset.navitype = ''
+        if( this.page > 0 && this.page < this.pages.length - 1 ) footer.dataset.navitype = 'middle'
         if( this.page == this.pages.length - 1 ) footer.dataset.navitype = 'last'
 
         var currentPage = this.pages[ this.page ].node
@@ -107,8 +92,8 @@ class Flow{
     }
 }
 
-var posterPreview = new PosterPreview()
+var poster = new Poster()
 var flow = new Flow()
 document.querySelector( '.arrow.right' ).addEventListener( 'click', ( ) => flow.navigate( ++flow.page ) )
 document.querySelector( '.arrow.left' ).addEventListener( 'click', ( ) => flow.navigate( --flow.page ) )
-document.querySelector( '#menuBut' ).addEventListener( 'click', ( ) => console.log( 'here' ) )
+document.querySelector( '#menuBut' ).addEventListener( 'click', ( ) => document.querySelector( '#menu' ).classList.toggle( 'active' ) )

@@ -8,17 +8,34 @@ html
     title pppp
     link(rel='stylesheet', id='mainStylesheet' href='../css/main.styl')
   body
-    //- #menu
-    //-   ul
-    //-     li News
-    //-     li Galería
-    //-     li About
-    //-     li Manifesto
-    //-     li Contacto
-    //-     li FAQ
-    //-     li Créditos
+    #menu
+      .page.active
+        .inner
+          ul
+            li #[a(href='javascript:void(0)') News ]
+            li #[a(href='javascript:void(0)') Galería ]
+            li #[a(href='javascript:void(0)') About ]
+            li #[a(href='javascript:void(0)') Manifesto ]
+            li #[a(href='javascript:void(0)') Contacto ]
+            li #[a(href='javascript:void(0)') FAQ ]
+            li #[a(href='javascript:void(0)') Créditos ]
+      .page.right
+        .inner News page
+      .page.right
+        .inner Gallery
+      .page.right
+        .inner About
+      .page.right
+        .inner Manifesto
+      .page.right
+        .inner Contact
+      .page.right
+        .inner FAQ
+      .page.right
+        .inner Credits
 
-    #posterPreview HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
+    #posterPreview
+      .inner HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
     #mainFlow
       .page.active( data-title='pppp', data-pid='main' )
         .inner
@@ -74,36 +91,35 @@ html
       .page.fullscreen( data-title='6. Color', data-pid='color', data-class = 'Color' )
         .inner
           ul.optionList
-            li.col(data-color='#626262') HOLA!
-            li.col(data-color='#003300') HOLA!
-            li.col(data-color='#000066') HOLA!
-            li.col(data-color='#330066') HOLA!
-            li.col(data-color='#660033') HOLA!
-            li.col(data-color='#990000') HOLA!
-            li.col(data-color='#ff3300') HOLA!
-            li(data-color='#ffffff').selected HOLA!
+            li.col(data-background='#626262' data-foreground='#ffffff') HOLA!
+            li.col(data-background='#003300' data-foreground='#ffffff') HOLA!
+            li.col(data-background='#000066' data-foreground='#ffffff') HOLA!
+            li.col(data-background='#330066' data-foreground='#ffffff') HOLA!
+            li.col(data-background='#660033' data-foreground='#ffffff') HOLA!
+            li.col(data-background='#990000' data-foreground='#ffffff') HOLA!
+            li.col(data-background='#ff3300' data-foreground='#ffffff') HOLA!
+            li(data-background='#ffffff' data-foreground='#000000').selected HOLA!
       .page.inlineEditor( data-title='7. Tu cartel', data-pid='preview' )
         .inner
-      .page( data-title='8. Guardar', data-pid='save' )
+      .page( data-title='8. Guardar', data-pid='save', data-class = 'Save' )
         .inner
-          p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a(href='javascript:void(0)') fotos], o en PDF para #[a(href='javascript:void(0)') imprimirlo]
+          p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a.save(href='javascript:void(0)') fotos], o en PDF para #[a.save(href='javascript:void(0)') imprimirlo]
       .page( data-title='9. Compartir', data-pid='share' )
         .inner
           ul
-            li Telegram
-            li Whatsapp
-            li Instagram
-            li Twitter
+            li #[a(href='https://telegram.me/share/url?url=http://google.com&text=alink') Telegram ]
+            li #[a(href='whatsapp://send?text=The text to share!' data-action='share/whatsapp/share') Whatsapp ]
+            li #[a(href='https://twitter.com/intent/tweet?text=Hello%20world' ) Twitter ]
       .page( data-title='10. News', data-pid='news' )
         .inner
           p Queremos avisarte para que veas tu cartel proyectado en los muros.
-          p Raúl@goni-studio.com
-          p Enviar
+          input( type='text' placeholder="nombre@correo.com")
+          p #[a(href='javascript:void(0)') Enviar ]
     #header.navi
       .inner
         #pageTitle.main pppp
       #menuBut —
-    #footer.navi.first( data-navitype = 'first' )
+    #footer.navi
       .inner.clearfix
         span.arrow.left ←
         span.arrow.right →
