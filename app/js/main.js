@@ -92,8 +92,60 @@ class Flow{
     }
 }
 
+class Menu{
+    constructor(){
+        this.node = document.querySelector( '#menu' )
+        Object.values( document.querySelectorAll( '.menuItem' ) ).forEach( m => {
+            m.addEventListener( 'click', ( e ) => {
+                this.node.querySelector( '.page[data-pid=menu]' ).classList.add( 'left' )
+                this.node.querySelector( '.page[data-pid=menu]' ).classList.remove( 'active' )
+                this.node.querySelector( '.page[data-pid=' + e.target.dataset.target + ']' ).classList.remove( 'right' )
+                this.node.querySelector( '.page[data-pid=' + e.target.dataset.target + ']' ).classList.add( 'active' )
+                footer.dataset.navitype = 'inMenu'
+
+                var headerTitle = document.querySelector( '#pageTitle' )
+                headerTitle.innerHTML = this.node.querySelector( '.page[data-pid=' + e.target.dataset.target + ']' ).dataset.title
+            } )
+        } )
+    }
+
+    backToHome( ){
+        this.node.querySelector( '.active' ).classList.add( 'right' )
+        this.node.querySelector( '.active' ).classList.remove( 'active' )
+        this.node.querySelector( '.page[data-pid=menu]' ).classList.remove( 'left' )
+        this.node.querySelector( '.page[data-pid=menu]' ).classList.add( 'active' )
+        footer.dataset.navitype = 'none'
+        var headerTitle = document.querySelector( '#pageTitle' )
+        headerTitle.innerHTML = 'Menu'
+    }
+
+    toggleActive( ){
+        this.node.classList.toggle( 'active' )
+        if( this.node.classList.contains( 'active' ) ){
+            var footer = document.querySelector( '#footer' )
+            footer.dataset.navitype = 'none'
+
+            var header = document.querySelector( '#header' )
+            header.classList.add( 'inMenu' )
+
+            var headerTitle = document.querySelector( '#pageTitle' )
+            headerTitle.classList.remove( 'main' )
+            headerTitle.innerHTML = 'Menu'
+
+        } else {
+            var header = document.querySelector( '#header' )
+            header.classList.remove( 'inMenu' )
+        }
+    }
+}
+
 var poster = new Poster()
 var flow = new Flow()
+var menu = new Menu()
+
 document.querySelector( '.arrow.right' ).addEventListener( 'click', ( ) => flow.navigate( ++flow.page ) )
 document.querySelector( '.arrow.left' ).addEventListener( 'click', ( ) => flow.navigate( --flow.page ) )
-document.querySelector( '#menuBut' ).addEventListener( 'click', ( ) => document.querySelector( '#menu' ).classList.toggle( 'active' ) )
+document.querySelector( '.arrow.menu' ).addEventListener( 'click', ( ) => menu.backToHome( ) )
+document.querySelector( '#menuBut' ).addEventListener( 'click', ( ) => menu.toggleActive() )
+
+// menu.toggleActive()

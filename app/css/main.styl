@@ -81,13 +81,15 @@ body
     transition transform 0.45s
     transform translate3d( 0vw, 0, 0 )
     z-index 10
-    display none
+    // display none
     pointer-events none
     top 0
-    left 0
+    left -100vw
+    transition left 0.4s
     &.active
         display block
         pointer-events auto
+        left 0
     ul
         margin 0
         padding 0
@@ -128,12 +130,33 @@ body
                     font-weight 600
         #menuBut
             position absolute
-            right 20px
-            top -5px
-            &.open
-                transform rotate( -90deg )
+            right 14px
+            top 6px
+            width 28px
+            height 28px
+            background-image url( './../assets/icons.svg' )
+            background-repeat no-repeat
+            background-size 256px 256px
+            background-position -210px -18px
+            transition transform 0.2s
+        &.inMenu
+            #menuBut
+                transform rotate( 90deg ) translate3d( -2px, 0, 0 )
     &#footer
         bottom 0
+        .inner
+            height 100%
+        .arrow
+            position absolute
+            top 50%
+            transform translate3d( 0, -50%, 0 )
+            opacity 0
+            &.right
+                right 0
+            &.left
+                left 0
+            &.menu
+                pointer-events none
         &[data-navitype="blockPrev"]
             .arrow.left
                 opacity 0.5
@@ -143,22 +166,32 @@ body
                 opacity 0.5
                 pointer-events none
         &[data-navitype="first"]
-            .arrow.left
-                display none
-        &[data-navitype="last"]
             .arrow.right
-                display none
+                opacity 1
+        &[data-navitype="last"]
+            .arrow.left
+                opacity 1
         &[data-navitype="middle"]
             .arrow.right
-                display block
+                opacity 1 !important
             .arrow.left
-                display block
-        .arrow
-            line-height 0
-            &.left
-                float left
-            &.right
-                float right
+                opacity 1 !important
+        &[data-navitype="none"]
+            .arrow.right
+                opacity 0
+            .arrow.left
+                opacity 0
+        &[data-navitype="inMenu"]
+            .arrow.right
+                display none
+                pointer-events none
+            .arrow.left
+                display none
+                pointer-events none
+            .arrow.menu
+                opacity 1
+                pointer-events auto
+        
 
 .clearfix:after {
     content ""
