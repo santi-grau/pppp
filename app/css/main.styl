@@ -72,6 +72,11 @@ body
     font-smoothing grayscale
     background #bfbfbf
 
+.bodySized
+    letter-spacing -0.25px
+    font-size 23px
+    line-height 23px
+    
 #menu
     position absolute
     background #ffffff
@@ -228,7 +233,7 @@ body
         margin naviHeight + 20px 20px naviHeight + 20px 20px
     &.active
         display block
-    
+        z-index 1
     ul.optionList
         margin 0
         padding 0
@@ -300,12 +305,35 @@ body
             list-style-type none
             margin 0
             padding 0
-    &[data-pid="news"]
-        input
-            font-family HelveticaNow
-            font-size 23px
-            letter-spacing -0.75px
-            line-height 25px
+    &[data-pid="about"]
+        ul
+            list-style-type none
+            margin 0
+            padding 0
+    &[data-pid="gallery"]
+        ul
+            list-style-type none
+            margin 0
+            padding 0
+            li
+                float left
+                width calc( 50% - 5px )
+                margin-left 10px
+                margin-bottom 10px
+                &:nth-child(odd)
+                    margin-left 0
+                .title
+                    font-size 12px
+                    line-height 14px
+                    letter-spacing -0.2px
+                    .util
+                        float right 
+                .imgCont
+                    width 100%
+                    margin-top 5px
+                    img
+                        display block
+
     
 #posterPreview
     position absolute
@@ -336,10 +364,6 @@ p
         font-weight 600
     &.wlinebreaks
         white-space pre
-    &.bodySized
-        letter-spacing -0.25px
-        font-size 23px
-        line-height 23px
 
 a
     color #000000

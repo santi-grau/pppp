@@ -1,22 +1,3 @@
-// connect to drive
-// var api_key = 'AIzaSyC8y5mzWn4GeKgezS4_s1j0OZ4wg5cATVY';
-// var folderId = '1ii9A3fpD-l_otRUCC-n-96pYtpBp4uTh';
-// var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
-
-// fetch(url).then(function(response) { return response.json(); }).then(function(myJson) {
-//     console.log(myJson);
-//     myJson.files.forEach( f => {
-//         if( f.mimeType !== 'image/png' && f.mimeType !== 'image/jpg' ) return
-//         console.log( f )
-//         var url2 = "https://drive.google.com/uc?id=" + f.id ;
-        
-//         var im = new Image()
-//         document.body.appendChild( im )
-//         im.src = url2
-//     })
-// });
-
-
 import Pages from './Pages/*.js'
 import Page from './Page'
 import Poster from './Poster'
@@ -95,6 +76,17 @@ class Flow{
 class Menu{
     constructor(){
         this.node = document.querySelector( '#menu' )
+        this.pages = []
+
+        var pages = this.node.querySelectorAll( '.page' )
+        Object.values( pages ).forEach( p => {
+            var pageObject
+            if( p.dataset.class ) pageObject = new Pages[ p.dataset.class ].default( p )
+            else pageObject = new Page( p )
+            // pageObject.on( 'updateFlow', ( e ) => this.update( e ) )
+            this.pages.push( pageObject )
+        })
+
         Object.values( document.querySelectorAll( '.menuItem' ) ).forEach( m => {
             m.addEventListener( 'click', ( e ) => {
                 this.node.querySelector( '.page[data-pid=menu]' ).classList.add( 'left' )
@@ -106,7 +98,7 @@ class Menu{
                 var headerTitle = document.querySelector( '#pageTitle' )
                 headerTitle.innerHTML = this.node.querySelector( '.page[data-pid=' + e.target.dataset.target + ']' ).dataset.title
             } )
-        } )
+        } ) 
     }
 
     backToHome( ){
@@ -135,6 +127,7 @@ class Menu{
         } else {
             var header = document.querySelector( '#header' )
             header.classList.remove( 'inMenu' )
+            flow.navigate( flow.page )
         }
     }
 }
