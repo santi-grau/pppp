@@ -86,11 +86,15 @@ body
     transition transform 0.45s
     transform translate3d( 0vw, 0, 0 )
     z-index 10
-    // display none
     pointer-events none
     top 0
-    left -100vw
+    left 100vw
     transition left 0.4s
+    .page
+        transition transform 0.45s 0.45s
+    &.active
+        .page
+            transition transform 0.45s
     &.active
         display block
         pointer-events auto
@@ -334,6 +338,13 @@ body
                     img
                         display block
 
+svg.poster
+    position absolute
+    background #000000
+    position absolute
+    top 50%
+    left 50%
+    transform translate3d( -50%, -50%, 0 )
     
 #posterPreview
     position absolute
@@ -353,11 +364,13 @@ body
         transform translate3d( 0, 0, 0 )
     .inner
         position absolute
+        width 90%
         top 50%
         left 50%
         transform translate3d( -50%, -50%, 0 )
         // background rgba( 0, 0, 0, 0.05 )
         transition transform 0.4s
+        overflow-wrap break-word
 
 p
     &.title

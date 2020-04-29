@@ -22,7 +22,7 @@ html
       .page.right( data-title ='News', data-pid='news' )
         .inner
           p Queremos avisarte para que veas tu cartel proyectado en los muros.
-          input( type='text' placeholder="nombre@correo.com")
+          input.bodySized( type='text' placeholder="nombre@correo.com")
           p #[a(href='javascript:void(0)') Enviar ]
       .page.right( data-title ='Galería', data-pid='gallery', data-class = 'Gallery' )
         .inner
@@ -81,7 +81,7 @@ html
           p Ahora puedes escribir tu mensaje para el mundo! (máximo 7 palabras, no muy largas y en el idioma que quieras)
       .page( data-title ='3. Redacción', data-pid='writer', data-class = 'Writer' )
         .inner
-          textarea
+          textarea( placeholder='Escribe aquí...' maxlength='70')
       .page.fullscreen( data-title ='4. Tipografía', data-pid='font', data-class = 'Font' )
         .inner
           ul.optionList
@@ -93,12 +93,14 @@ html
             li.prismaset(data-font='prismaset') HOLA!
             li.trim(data-font='trim') HOLA!
             li.geogrotesque(data-font='geogrotesque') HOLA!
-      .page.fullscreen.inlineEditor( data-title ='5. Tamaño', data-pid='size', data-class = 'Size' )
+      .page.fullscreen( data-title ='5. Tamaño', data-pid='size', data-class = 'Size' )
+        svg.poster
         .inner
           #sizeSelector
             span.selector.more( data-action='more') +
             span.selector.less( data-action='less') –
-      .page.fullscreen.inlineEditor( data-title ='6. Alinear', data-pid='align', data-class = 'Align' )
+      .page.fullscreen( data-title ='6. Alinear', data-pid='align', data-class = 'Align' )
+        svg.poster
         .inner
           #alignSelector
             span.selector.left( data-action='left')
@@ -115,8 +117,8 @@ html
             li.col(data-background='#990000' data-foreground='#ffffff') HOLA!
             li.col(data-background='#ff3300' data-foreground='#ffffff') HOLA!
             li(data-background='#ffffff' data-foreground='#000000').selected HOLA!
-      .page.inlineEditor( data-title ='7. Tu cartel', data-pid='preview' )
-        .inner
+      .page( data-title ='7. Tu cartel', data-pid='preview' )
+        svg.poster
       .page( data-title ='8. Guardar', data-pid='save', data-class = 'Save' )
         .inner
           p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a.save(href='javascript:void(0)') fotos], o en PDF para #[a.save(href='javascript:void(0)') imprimirlo]
@@ -129,7 +131,7 @@ html
       .page( data-title ='10. News', data-pid='news' )
         .inner
           p Queremos avisarte para que veas tu cartel proyectado en los muros.
-          input( type='text' placeholder="nombre@correo.com")
+          input.bodySized( type='text' placeholder="nombre@correo.com")
           p #[a(href='javascript:void(0)') Enviar ]
     #header.navi
       .inner
