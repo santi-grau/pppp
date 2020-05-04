@@ -80,14 +80,15 @@ class Poster{
         inner.style.width =  textarea.getBoundingClientRect().width + 'px'
         inner.style.height = textarea.getBoundingClientRect().height + 'px'
 
-        var vector = document.getElementById( 'composerVector' )
+        var svgns = 'http://www.w3.org/2000/svg'
+        var vector = document.getElementsByTagName( 'svg' )[ 0 ]
         vector.setAttribute( 'width',  textarea.parentNode.getBoundingClientRect().width )
         vector.setAttribute( 'height', textarea.parentNode.getBoundingClientRect().height )
 
         const style = getComputedStyle( textarea )
         while (vector.lastChild) vector.removeChild( vector.lastChild )
         // console.log( style, style.backgroundColor )
-        var svgns = 'http://www.w3.org/2000/svg'
+        
         var rect = document.createElementNS( svgns, 'rect' );
         rect.setAttributeNS( null, 'width', textarea.parentNode.getBoundingClientRect().width )
         rect.setAttributeNS( null, 'height', textarea.parentNode.getBoundingClientRect().height )
