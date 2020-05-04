@@ -26,36 +26,65 @@
     src url('./../assets/prismaset.otf')
 
 @font-face
+    font-family 'kmstandard'
+    src url('./../assets/kmstandard.otf')
+
+@font-face
+    font-family 'cooper'
+    src url('./../assets/cooper.otf')
+
+@font-face
+    font-family 'archicoco'
+    src url('./../assets/archicoco.otf')
+
+
+@font-face
+    font-family 'dmserif'
+    src url('./../assets/dmserif.ttf')
+
+@font-face
     font-family 'trim'
     src url('./../assets/trim.otf')
 
 naviHeight = 32px
 
-.helvetica
-    font-family HelveticaNow
+.cooper, [data-font="cooper"]
+    font-family cooper !important
+
+.dmserif, [data-font="dmserif"]
+    font-family dmserif !important
+
+.kmstandard, [data-font="kmstandard"]
+    font-family kmstandard !important
+
+.archicoco, [data-font="archicoco"]
+    font-family archicoco !important
+
+.helvetica, [data-font="helvetica"]
+    font-family HelveticaNow !important
     font-weight 600
 
-.af
-    font-family 'Courier New', Courier, monospace
+.af, [data-font="af"]
+    font-family 'Courier New', Courier, monospace !important
 
-.times
-    font-family Times
+.times, [data-font="times"]
+    font-family Times !important
     font-weight 900
 
-.modern
-    font-family 'Courier New', Courier, monospace
+.modern, [data-font="modern"]
+    font-family 'Courier New', Courier, monospace !important
 
-.marsh
-    font-family marsh
+.marsh, [data-font="marsh"]
+    font-family marsh !important
 
-.prismaset
-    font-family prismaset
+.prismaset, [data-font="prismaset"]
+    font-family prismaset !important
 
-.trim
-    font-family trim
+.trim, [data-font="trim"]
+    font-family trim !important
 
-.geogrotesque
-    font-family geogrotesque
+.geogrotesque, [data-font="geogrotesque"]
+    font-family geogrotesque !important
 
 html, body
     padding 0
@@ -71,6 +100,7 @@ body
     webkit-font-smoothing antialiased
     font-smoothing grayscale
     background #bfbfbf
+    overflow-x hidden
 
 .bodySized
     letter-spacing -0.25px
@@ -215,6 +245,31 @@ body
    clear: both;
 }
 
+#composerText
+    position absolute
+    top 0
+    left 0
+    z-index 100
+    position absolute
+    top 50%
+    left 50%
+    transform translate3d( -50%, -50%, 0 )
+    pointer-events none
+    opacity 0
+    // display none
+    #composerInner
+        width calc( 100% - 10px )
+        height calc( 100% - 10px )
+        position absolute
+        top 50%
+        left 50%
+        transform translate3d( -50%, -50%, 0 )
+        word-break break-word
+        
+        // display none
+    #composerVector
+        position relative
+
 
 .page
     position absolute
@@ -238,6 +293,8 @@ body
     &.active
         display block
         z-index 1
+    &.posterPreview
+        background #bfbfbf
     ul.optionList
         margin 0
         padding 0
@@ -252,18 +309,6 @@ body
                 content '√'
                 position absolute
                 right 20px
-    &[data-pid="writer"]
-        textarea
-            outline 0px none transparent
-            width 100%
-            margin 0
-            padding 0
-            // display block
-            height 100vh
-            font-size 46px
-            line-height 50px
-            font-family HelveticaNow
-            border none
     &[data-pid="size"]
         #sizeSelector
             position relative
@@ -337,14 +382,40 @@ body
                     margin-top 5px
                     img
                         display block
+.frame
+        position absolute
+        top 50%
+        left 50%
+        transform translate3d( -50%, -50%, 0 )
+        // background #00ff00
+        width 90vw
+        height 132vw
+        font-size 46px
+        line-height 50px
+        border solid 1px #444444
+        background #ffffff
+        textarea.poster
+            font-size 46px
+            line-height 50px
+            outline 0px none transparent
+            width calc( 100% - 10px )
+            height calc( 100% - 10px )
+            position absolute
+            top 50%
+            left 50%
+            transform translate3d( -50%, -50%, 0 )
+            // background #0f00ff
+            padding 0
+            // font-weight 600 !important
+            font-family HelveticaNow
+            // text-align center
+            letter-spacing -1.5px
+            overflow hidden
+            resize none
+            border none
+            background none
 
-svg.poster
-    position absolute
-    background #000000
-    position absolute
-    top 50%
-    left 50%
-    transform translate3d( -50%, -50%, 0 )
+            
     
 #posterPreview
     position absolute

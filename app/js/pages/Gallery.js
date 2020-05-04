@@ -1,27 +1,23 @@
 import Page from './../Page'
 
-// connect to drive
-// var api_key = 'AIzaSyC8y5mzWn4GeKgezS4_s1j0OZ4wg5cATVY';
-// var folderId = '1ii9A3fpD-l_otRUCC-n-96pYtpBp4uTh';
-// var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
-
-// fetch(url).then(function(response) { return response.json(); }).then(function(myJson) {
-//     console.log(myJson);
-//     myJson.files.forEach( f => {
-//         if( f.mimeType !== 'image/png' && f.mimeType !== 'image/jpg' ) return
-//         console.log( f )
-//         var url2 = "https://drive.google.com/uc?id=" + f.id ;
-        
-//         var im = new Image()
-//         document.body.appendChild( im )
-//         im.src = url2
-//     })
-// });
-
-
 class Gallery extends Page{
     constructor( p ){
         super( p )
+
+
+        // connect to drive
+        var api = 'AIzaSyBaLx1pf7T2E0ANuktHCAXDu9bfIpGU4X8'
+        var api_key = 'AIzaSyC8y5mzWn4GeKgezS4_s1j0OZ4wg5cATVY';
+        var folderId = '1AXV4s0qcnwPydKjFNb1id5YmQvifmuMx';
+        var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
+
+        fetch(url).then(function(response) { return response.json(); }).then(function(myJson) {
+            console.log(myJson);
+            myJson.files.forEach( f => {
+                if( f.mimeType == 'image/svg+xml' ) console.log( f )
+            })
+        });
+
 
         var images = 20
         for( var i = 0 ; i < 20 ; i++ ){
@@ -34,7 +30,7 @@ class Gallery extends Page{
         var list = this.node.querySelector( 'ul' )
 
         var listItem = document.createElement( 'li' )
-        listItem.classList.add( 'poster', 'clearfix' )
+        listItem.classList.add( 'block', 'clearfix' )
 
         var topContainer = document.createElement( 'div' )
         topContainer.classList.add( 'title', 'clearfix' )

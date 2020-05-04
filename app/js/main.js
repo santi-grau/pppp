@@ -20,7 +20,7 @@ class Flow{
             this.pages.push( pageObject )
         })
 
-        this.navigate( 9 )
+        this.navigate( 7 )
     }
 
     update( e ){
@@ -40,6 +40,10 @@ class Flow{
             case 'colorUpdate':
                 poster.updateColor( e.data )
                 break;
+            case 'posterExport':
+                poster.posterExport( e.data )
+                break;
+                
             default: console.log( 'no idea ')
         }
     }

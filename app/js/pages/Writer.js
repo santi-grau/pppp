@@ -3,15 +3,20 @@ import Page from './../Page'
 class Writer extends Page{
     constructor( p ){
         super( p )
-        document.querySelector( 'textarea' ).addEventListener( 'change', ( e ) => this.emit( 'updateFlow' , { action : 'copyUpdate', data : e.currentTarget.value } ) )
-        document.querySelector( 'textarea' ).addEventListener( 'input', ( e ) => this.emit( 'updateFlow' , { action : 'copyUpdate', data : e.currentTarget.value } ) )
+        this.textarea = this.node.querySelector( 'textarea' )
+        this.textarea.addEventListener( 'change', ( e ) => this.input( e ) )
+        this.textarea.addEventListener( 'input', ( e ) => this.input( e ) )
     }
 
-    onEnterPage(){
-        // setTimeout( () => {
-            // this.node.querySelector( 'textarea' ).focus()
-        // }, 1000 )
-        
+    updateBox(){
+        setTimeout( () => { 
+            this.textarea.style.cssText = 'height:auto; padding:0'
+            this.textarea.style.cssText = 'height:' + this.textarea.scrollHeight + 'px';
+        } , 1 )
+    }
+
+    input( e ){
+        this.emit( 'updateFlow' , { action : 'copyUpdate', data : this.textarea.value } )
     }
 }
 

@@ -8,6 +8,11 @@ html
     title pppp
     link(rel='stylesheet', id='mainStylesheet' href='../css/main.styl')
   body
+    svg( xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" )#composerVector
+    #composerText
+      #composerInner
+      
+        
     #menu
       .page.active( data-title ='Menu', data-pid='menu' )
         .inner
@@ -50,8 +55,6 @@ html
       .page.right( data-title ='Créditos', data-pid='credits' )
         .inner Credits
 
-    #posterPreview
-      .inner HOLA ESTE ES TU POSTER PROTESTA Y MOLA MIL
     #mainFlow
       .page.active( data-title ='pppp', data-pid='main' )
         .inner
@@ -79,28 +82,30 @@ html
       .page( data-title ='3. Redacción', data-pid='infotext' )
         .inner
           p Ahora puedes escribir tu mensaje para el mundo! (máximo 7 palabras, no muy largas y en el idioma que quieras)
-      .page( data-title ='3. Redacción', data-pid='writer', data-class = 'Writer' )
-        .inner
-          textarea( placeholder='Escribe aquí...' maxlength='70')
+      .page.posterPreview( data-title ='3. Redacción', data-pid='writer', data-class = 'Writer' )
+        .frame
+          textarea.poster( placeholder='Escribe aquí...' maxlength='70' data-gramm_editor='false' rows='1' data-font='helvetica' )
       .page.fullscreen( data-title ='4. Tipografía', data-pid='font', data-class = 'Font' )
         .inner
           ul.optionList
-            li.helvetica(data-font='helvetica') HOLA!
-            li.af(data-font='af').selected HOLA!
-            li.times(data-font='times') HOLA!
-            li.modern(data-font='modern') HOLA!
+            li.cooper(data-font='cooper').selected HOLA!
+            li.af(data-font='af') HOLA!
+            li.dmserif(data-font='dmserif') HOLA!
+            li.kmstandard(data-font='kmstandard') HOLA!
             li.marsh(data-font='marsh') HOLA!
-            li.prismaset(data-font='prismaset') HOLA!
+            li.archicoco(data-font='archicoco') HOLA!
             li.trim(data-font='trim') HOLA!
             li.geogrotesque(data-font='geogrotesque') HOLA!
-      .page.fullscreen( data-title ='5. Tamaño', data-pid='size', data-class = 'Size' )
-        svg.poster
+      .page.posterPreview.fullscreen( data-title ='5. Tamaño', data-pid='size', data-class = 'Size' )
+        .frame
+          textarea.poster.editor( placeholder='Escribe aquí...' maxlength='70' data-gramm_editor='false' rows='1' readonly data-font='helvetica' )
         .inner
           #sizeSelector
             span.selector.more( data-action='more') +
             span.selector.less( data-action='less') –
-      .page.fullscreen( data-title ='6. Alinear', data-pid='align', data-class = 'Align' )
-        svg.poster
+      .page.posterPreview.fullscreen( data-title ='6. Alinear', data-pid='align', data-class = 'Align' )
+        .frame
+          textarea.poster.editor( placeholder='Escribe aquí...' maxlength='70' data-gramm_editor='false' rows='1' readonly data-font='helvetica' )
         .inner
           #alignSelector
             span.selector.left( data-action='left')
@@ -117,11 +122,12 @@ html
             li.col(data-background='#990000' data-foreground='#ffffff') HOLA!
             li.col(data-background='#ff3300' data-foreground='#ffffff') HOLA!
             li(data-background='#ffffff' data-foreground='#000000').selected HOLA!
-      .page( data-title ='7. Tu cartel', data-pid='preview' )
-        svg.poster
+      .page.posterPreview( data-title ='7. Tu cartel', data-pid='preview' )
+        .frame
+          textarea.poster.editor( placeholder='Escribe aquí...' maxlength='70' data-gramm_editor='false' rows='1' readonly data-font='helvetica' )
       .page( data-title ='8. Guardar', data-pid='save', data-class = 'Save' )
         .inner
-          p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a.save(href='javascript:void(0)') fotos], o en PDF para #[a.save(href='javascript:void(0)') imprimirlo]
+          p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a.save(href='javascript:void(0)' data-format='png') fotos], o en PDF para #[a.save(href='javascript:void(0)' data-format='pdf') imprimirlo]
       .page( data-title ='9. Compartir', data-pid='share' )
         .inner
           ul

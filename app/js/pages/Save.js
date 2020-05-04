@@ -5,26 +5,16 @@ class Save extends Page{
     constructor( p ){
         super( p )
         Object.values( p.querySelectorAll( '.save' ) ).forEach( b => b.addEventListener( 'click', ( e ) => this.share( e ) ) )
+        // this.emit( 'updateFlow' , { action : 'posterExport', data : 'svg' } )
+    }
+
+    onEnterPage(){
+        this.emit( 'updateFlow' , { action : 'posterExport', data : 'svg' } )
     }
 
     share( e ){
-        // console.log( e )
-        // var node = document.getElementById('posterPreview')
-        // node.classList.add( 'screenshot' )
-        // domtoimage.toPng(node)
-        // .then(function (dataUrl) {
-        //     var img = new Image();
-        //     img.src = dataUrl;
-        //     img.style.position = 'absolute'
-        //     img.style.left = 0
-        //     img.style.top = 0
-        //     document.body.appendChild(img);
-        //     node.classList.remove( 'styleOff' )
-        // })
-        // .catch(function (error) {
-        //     console.error('oops, something went wrong!', error);
-        // });
-
+        console.log( e.target.dataset.format )
+        this.emit( 'updateFlow' , { action : 'posterExport', data : e.target.dataset.format } )
     }
 }
 
