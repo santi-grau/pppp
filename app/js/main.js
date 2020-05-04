@@ -20,7 +20,7 @@ class Flow{
             this.pages.push( pageObject )
         })
 
-        this.navigate( 7 )
+        this.navigate( 0 )
     }
 
     update( e ){
