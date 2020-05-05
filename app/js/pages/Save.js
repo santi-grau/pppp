@@ -5,10 +5,10 @@ class Save extends Page{
     constructor( p ){
         super( p )
         Object.values( p.querySelectorAll( '.save' ) ).forEach( b => b.addEventListener( 'click', ( e ) => this.share( e ) ) )
-        // this.emit( 'updateFlow' , { action : 'posterExport', data : 'svg' } )
     }
 
     onEnterPage(){
+        // if( window.inLocal ) return window.posterId = "1OHNnY6lIOZjrIfTxrWOTWJqoXEG4uv5-"
         this.emit( 'updateFlow' , { action : 'posterExport', data : 'svg' } )
     }
 

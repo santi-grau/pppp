@@ -128,16 +128,18 @@ html
       .page( data-title ='8. Guardar', data-pid='save', data-class = 'Save' )
         .inner
           p Tu cartel será anónimo y formará parte de la galería. Ahora puedes guardarlo en tus #[a.save(href='javascript:void(0)' data-format='png') fotos], o en PDF para #[a.save(href='javascript:void(0)' data-format='pdf') imprimirlo]
-      .page( data-title ='9. Compartir', data-pid='share' )
+      .page( data-title ='9. Compartir', data-pid='share', data-class = 'Share' )
         .inner
           ul
-            li #[a(href='https://telegram.me/share/url?url=http://google.com&text=alink') Telegram ]
-            li #[a(href='whatsapp://send?text=The text to share!' data-action='share/whatsapp/share') Whatsapp ]
-            li #[a(href='https://twitter.com/intent/tweet?text=Hello%20world' ) Twitter ]
+            li #[a.share(href='javascript:void(0);') Telegram ]
+            li #[a.share(href='javascript:void(0);') Whatsapp ]
+            li #[a.share(href='javascript:void(0);') Twitter ]
       .page( data-title ='10. News', data-pid='news' )
         .inner
           p Queremos avisarte para que veas tu cartel proyectado en los muros.
           input.bodySized( type='text' placeholder="nombre@correo.com")
+          input.bodySized( type='text' placeholder="Código postal")
+          input.bodySized( type='text' placeholder="País")
           p #[a(href='javascript:void(0)') Enviar ]
     #header.navi
       .inner

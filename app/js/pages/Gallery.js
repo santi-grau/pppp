@@ -11,21 +11,17 @@ class Gallery extends Page{
         var folderId = '1AXV4s0qcnwPydKjFNb1id5YmQvifmuMx';
         var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
 
-        fetch(url).then(function(response) { return response.json(); }).then(function(myJson) {
+        fetch(url).then(function(response) { return response.json(); }).then( (myJson) => {
             console.log(myJson);
             myJson.files.forEach( f => {
-                if( f.mimeType == 'image/svg+xml' ) console.log( f )
+                if( f.mimeType == 'image/svg+xml' ) {
+                    this.addItem( f )
+                }
             })
         });
-
-
-        var images = 20
-        for( var i = 0 ; i < 20 ; i++ ){
-            this.addItem( i )
-        }
     }
 
-    addItem( i ){
+    addItem( f ){
 
         var list = this.node.querySelector( 'ul' )
 
@@ -47,12 +43,12 @@ class Gallery extends Page{
         util.innerHTML = 'Descarga '
 
         var linkjpg = document.createElement( 'a' )
-        linkjpg.setAttribute( 'href', 'javascript : void( 0 )')
+        linkjpg.setAttribute( 'href', 'javascript : void( 0 );')
         linkjpg.innerHTML = 'JPG '
         util.appendChild( linkjpg )
 
         var linkpdf = document.createElement( 'a' )
-        linkpdf.setAttribute( 'href', 'javascript : void( 0 )')
+        linkpdf.setAttribute( 'href', 'javascript : void( 0 );')
         linkpdf.innerHTML = 'PDF '
         util.appendChild( linkpdf )
 
@@ -61,7 +57,7 @@ class Gallery extends Page{
         listItem.appendChild( imgCont )
 
         var img = document.createElement( 'img' )
-        img.setAttribute( 'src', 'https://picsum.photos/seed/' + Math.floor( Math.random( ) * 100 ) + '/297/420' )
+        img.setAttribute( 'src', 'https://drive.google.com/uc?id=' + f.id )
         img.setAttribute( 'width', '100%' )
         img.setAttribute( 'height', 'auto' )
 
