@@ -21,11 +21,11 @@ class Flow{
             var pageObject
             if( p.dataset.class ) pageObject = new Pages[ p.dataset.class ].default( p )
             else pageObject = new Page( p )
-            pageObject.on( 'updateFlow', ( e ) => this.update( e ) )
+            pageObject.on( 'updateFlow', ( e, f ) => this.update( e ) )
             this.pages.push( pageObject )
         })
 
-        this.navigate( 0 )
+        this.navigate( 4 )
     }
 
     update( e ){
@@ -46,7 +46,10 @@ class Flow{
                 poster.updateColor( e.data )
                 break;
             case 'posterExport':
-                poster.posterExport( e.data )
+                poster.posterExport( e.data, e.meta )
+                break;
+            case 'navigateForward':
+                this.navigate( ++this.page )
                 break;
                 
             default: console.log( 'no idea ')

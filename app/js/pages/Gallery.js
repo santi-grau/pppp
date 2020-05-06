@@ -4,8 +4,6 @@ class Gallery extends Page{
     constructor( p ){
         super( p )
 
-
-        // connect to drive
         var api = 'AIzaSyBaLx1pf7T2E0ANuktHCAXDu9bfIpGU4X8'
         var api_key = 'AIzaSyC8y5mzWn4GeKgezS4_s1j0OZ4wg5cATVY';
         var folderId = '1AXV4s0qcnwPydKjFNb1id5YmQvifmuMx';

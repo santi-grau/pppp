@@ -11,6 +11,7 @@ import kmstandard from './../assets/kmstandard.otf'
 import librefranklin from './../assets/librefranklin.ttf'
 import prismaset from './../assets/prismaset.otf'
 import trim from './../assets/trim.otf'
+import funct from './../assets/funct.otf'
 
 
 import { saveSvgAsPng, svgAsPngUri } from 'save-svg-as-png'
@@ -27,7 +28,8 @@ var fonts = {
     dmserif : dmserif,
     archicoco : archicoco,
     kmstandard : kmstandard,
-    librefranklin : librefranklin
+    librefranklin : librefranklin,
+    funct : funct
 }
 
 class Poster{
@@ -69,7 +71,7 @@ class Poster{
         // this.posterExport( null )
     }
 
-    posterExport( format ){
+    posterExport( format, meta = null ){
     
         var textarea = document.querySelectorAll( '.poster' )[ 0 ]
         
@@ -154,7 +156,7 @@ class Poster{
             setTimeout( () => {
                 if( format == 'png' ) this.downloadPNG( vector, title )
                 if( format == 'pdf' ) this.downloadPDF( vector, title )
-                if( format == 'svg' ) this.downloadSVG( vector, title )
+                if( format == 'svg' ) this.downloadSVG( vector, title, meta )
             }, 1000 )
         }
 
@@ -182,14 +184,14 @@ class Poster{
         } )
     }
 
-    downloadSVG( svg, title ){
+    downloadSVG( svg, title, meta ){
         fetch('https://cors-anywhere.herokuapp.com/https://radiant-springs-85452.herokuapp.com/api',{ 
         // fetch('http://localhost:5000/api',{ 
             method: 'post', 
             body: JSON.stringify( { 
                 data : new XMLSerializer().serializeToString( svg ),
                 title : title,
-                description : 'pais, fecha, etc'
+                description : meta || ''
             } ),
             headers: {'Content-Type': 'application/json'}
             

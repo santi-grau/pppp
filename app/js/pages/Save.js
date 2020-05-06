@@ -1,5 +1,4 @@
 import Page from './../Page'
-import domtoimage from 'dom-to-image'
 
 class Save extends Page{
     constructor( p ){
@@ -8,8 +7,8 @@ class Save extends Page{
     }
 
     onEnterPage(){
-        // if( window.inLocal ) return window.posterId = "1OHNnY6lIOZjrIfTxrWOTWJqoXEG4uv5-"
-        this.emit( 'updateFlow' , { action : 'posterExport', data : 'svg' } )
+        if( !window.posterUploaded ) this.emit( 'updateFlow' , { action : 'posterExport', data : 'svg' } )
+        window.posterUploaded = true
     }
 
     share( e ){

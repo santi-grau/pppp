@@ -18,6 +18,10 @@
     src url('./../assets/geogrotesque.otf')
 
 @font-face
+    font-family 'funct'
+    src url('./../assets/funct.otf')
+
+@font-face
     font-family 'marsh'
     src url('./../assets/marsh.otf')
 
@@ -51,6 +55,9 @@ naviHeight = 32px
 .cooper, [data-font="cooper"]
     font-family cooper !important
 
+.funct, [data-font="funct"]
+    font-family funct !important
+
 .dmserif, [data-font="dmserif"]
     font-family dmserif !important
 
@@ -64,15 +71,9 @@ naviHeight = 32px
     font-family HelveticaNow !important
     font-weight 600
 
-.af, [data-font="af"]
-    font-family 'Courier New', Courier, monospace !important
-
 .times, [data-font="times"]
     font-family Times !important
     font-weight 900
-
-.modern, [data-font="modern"]
-    font-family 'Courier New', Courier, monospace !important
 
 .marsh, [data-font="marsh"]
     font-family marsh !important
@@ -304,8 +305,6 @@ body
             border-bottom solid 1px #444444
             position relative
             padding 15px 20px
-            &.col
-                color #ffffff
             &.selected::after
                 font-family HelveticaNow
                 content '√'
